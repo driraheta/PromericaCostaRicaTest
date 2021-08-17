@@ -24,9 +24,17 @@ namespace API.Repositories
             return new SqlConnection(_sqlConfiguration.ConnectionString);
         }
 
-        public Task<bool> DeleteMake()
+        public async Task<bool> DeleteMake(Make make)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"
+                        DELETE
+                        FROM Make 
+                        WHERE id = @Id";
+
+            var result =  await db.ExecuteAsync(sql, new { Id = make.Id });
+            return result > 0;
         }
 
         public async Task<IEnumerable<Make>> GetAllMakes()
@@ -52,14 +60,28 @@ namespace API.Repositories
             return await db.QueryFirstOrDefaultAsync<Make>(sql, new { Id = id });
         }
 
-        public Task<bool> InsertMake()
+        public async Task<bool> InsertMake(Make make)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"
+                        INSERT INTO Make (name, country) 
+                        VALUES (@Name, @Country) ";
+
+            var result = await db.ExecuteAsync(sql, new { make.Name, make.Country });
+            return result > 0;
         }
 
-        public Task<bool> UpdateMake()
+        public async Task<bool> UpdateMake(Make make)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"
+                        UPDATE Make SET name = @Name, country = @Country 
+                        HWERE id = @Id ";
+
+            var result = await db.ExecuteAsync(sql, new { make.Name, make.Country, make.Id });
+            return result > 0;
         }
     }
 }

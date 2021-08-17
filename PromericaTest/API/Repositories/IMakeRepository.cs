@@ -12,10 +12,10 @@ namespace API.Repositories
 
         Task<Make> GetMake(int id);
 
-        Task<bool> InsertMake();
+        Task<bool> InsertMake(Make make);
 
-        Task<bool> UpdateMake();
+        Task<bool> UpdateMake(Make make);
 
-        Task<bool> DeleteMake();
+        Task<bool> DeleteMake(Make make);
     }
 }
