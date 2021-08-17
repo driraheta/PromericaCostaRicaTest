@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Repositories;
+using Microsoft.OpenApi.Models;
+using API.Infra;
 
 namespace API
 {
@@ -27,16 +29,20 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             //agrego inyeccion de dependencia de la conexion a la base de datos..
-            var sqlConnectionConfig = new SqlConnection(Configuration.GetConnectionString("demobd"));
+            var sqlConnectionConfig = new SQLConfiguration(Configuration.GetConnectionString("demobd"));
             services.AddSingleton(sqlConnectionConfig);
 
             //inyeccion de dependencia del repositorios..
             services.AddScoped<IMakeRepository, MakeRepository>();
 
-            //agregare configuracion para usar swagger..
-
-
             services.AddControllers();
+
+            //agregare configuracion para usar swagger..
+            services.AddSwaggerGen(d=>
+            {
+                d.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+            }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +52,16 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Bank Promerica DEMO V1");
+            });
 
             app.UseRouting();
 
