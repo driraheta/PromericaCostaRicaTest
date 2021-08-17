@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApp.Models.Pattern>
+@{
+    ViewData["Title"] = "Details Page";
+}
+
+<div class="text-left">
+    <h1 class="display-6">Lista de modelos de Vehículos</h1>
+    <p>Segun marca seleccionada</p>
+</div>
+
+<div class="container-fluid">
+
+    <table class="table table-sm table-responsive-lg table-borderless table-hover">
+        <thead>
+            <tr class="table-active">                
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Color</th>
+                <th>N° Puertas</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Year</td>
+                <td>@item.Color</td>
+                <td>@item.Doors</td>
+                <td>
+                    
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="text-right">
+    <a class="btn-link"
+       asp-controller="Home" asp-action="Index"
+       title="Maestro Marcas">
+        <i class="fas fa-undo"></i>&nbsp;Regresar
+    </a>
+</div>

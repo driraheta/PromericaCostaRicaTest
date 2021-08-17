@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApp.Models.Make>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-6">Maestro de Marcas de Vehículos</h1>
+    <p>Puedes ver un listado de modelos de vehículos por cada marca.</p>
+</div>
+
+<div class="container-fluid">
+
+
+            <table class="table table-sm table-responsive-lg table-borderless table-hover">
+                <thead>
+                    <tr class="table-active">
+                        <th>Codigo</th>
+                        <th>Marca</th>
+                        <th>Orígen</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Country</td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-success"
+                                   asp-controller="Detail" asp-action="Index" asp-route-id="@item.Id"
+                                   title="Ver Modelos (detalle)">
+                                    <i class="fas fa-car"></i>&nbsp;Modelos
+                                </a>
+                                |
+                                <a class="btn btn-sm btn-outline-success"
+                                   asp-controller="Detail" asp-action="Index" title="Editar">
+                                    <i class="fas fa-pencil-alt"></i>&nbsp;Editar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+</div>
