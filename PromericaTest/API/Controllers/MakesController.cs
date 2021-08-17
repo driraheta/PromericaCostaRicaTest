@@ -20,19 +20,32 @@ namespace API.Controllers
             _makeRepository = makeRepository;
         }
 
+        /// <summary>
+        /// Retorna la lista completa de marcas de autos.
+        /// </summary>
+        /// <returns>Lista de marcas de autos.</returns>
         [HttpGet]
         public async Task<IActionResult> GetAllMakes()
         {
             return Ok(await _makeRepository.GetAllMakes());
         }
 
-
+        /// <summary>
+        /// Retorna un objeto de tipo Marca de autos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMake(int id)
         {
             return Ok(await _makeRepository.GetMake(id));
         }
 
+        /// <summary>
+        /// Crea un nuevo objeto tipo marca de autos
+        /// </summary>
+        /// <param name="make"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> InsertMake([FromBody] Make make)
         {
@@ -47,6 +60,11 @@ namespace API.Controllers
             return Created("created", created);
         }
 
+        /// <summary>
+        /// Actualiza un objeto tipo marca de autos.
+        /// </summary>
+        /// <param name="make"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> UpdateMake([FromBody] Make make)
         {
@@ -61,7 +79,11 @@ namespace API.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Borra un objeto de tipo marca de autos.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMake(int id)
         {

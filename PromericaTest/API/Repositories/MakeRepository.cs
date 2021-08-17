@@ -76,11 +76,19 @@ namespace API.Repositories
         {
             var db = dbConnection();
 
-            var sql = @"
-                        UPDATE Make SET name = @Name, country = @Country 
-                        HWERE id = @Id ";
+            //var sql = @"
+            //            UPDATE Make SET name = @Name, country = @Country 
+            //            WHERE id = @Id ";
 
-            var result = await db.ExecuteAsync(sql, new { make.Name, make.Country, make.Id });
+            var param = new DynamicParameters();
+            param.Add("@Id", make.Id);
+            param.Add("@Name", make.Name);
+            param.Add("@Country", make.Country);
+
+            var storeProcedure = "sp_updatemake";
+
+            //var result = await db.ExecuteAsync(sql, new { make.Name, make.Country, make.Id });
+            var result = await db.ExecuteAsync(storeProcedure, param, commandType: System.Data.CommandType.StoredProcedure);
             return result > 0;
         }
     }

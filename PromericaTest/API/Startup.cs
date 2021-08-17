@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using API.Repositories;
 using Microsoft.OpenApi.Models;
 using API.Infra;
+using System.Reflection;
+using System.IO;
 
 namespace API
 {
@@ -25,6 +27,8 @@ namespace API
 
         public IConfiguration Configuration { get; }
 
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -34,15 +38,21 @@ namespace API
 
             //inyeccion de dependencia del repositorios..
             services.AddScoped<IMakeRepository, MakeRepository>();
+            services.AddScoped<IPatternRepository, PatternRepository>();
 
             services.AddControllers();
 
             //agregare configuracion para usar swagger..
             services.AddSwaggerGen(d=>
             {
-                d.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            }
-                );
+                d.SwaggerDoc("v1", new OpenApiInfo { Title = "API - Autos", Version = "v1" });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                d.IncludeXmlComments(xmlPath);
+            });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

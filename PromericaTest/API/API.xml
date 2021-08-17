@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.MakesController.GetAllMakes">
+            <summary>
+            Retorna la lista completa de marcas de autos.
+            </summary>
+            <returns>Lista de marcas de autos.</returns>
+        </member>
+        <member name="M:API.Controllers.MakesController.GetMake(System.Int32)">
+            <summary>
+            Retorna un objeto de tipo Marca de autos
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.MakesController.InsertMake(API.Models.Make)">
+            <summary>
+            Crea un nuevo objeto tipo marca de autos
+            </summary>
+            <param name="make"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.MakesController.UpdateMake(API.Models.Make)">
+            <summary>
+            Actualiza un objeto tipo marca de autos.
+            </summary>
+            <param name="make"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.MakesController.DeleteMake(System.Int32)">
+            <summary>
+            Borra un objeto de tipo marca de autos.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.PatternsController.GetAllPatterns">
+            <summary>
+            Retorna un listado de modelos de autos.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.PatternsController.GetPatterns(System.Int32)">
+            <summary>
+            Retorna un listado de modelos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.PatternsController.GetPattern(System.Int32)">
+            <summary>
+            Retorna un objeto de tipo modelo autos.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.PatternsController.DeletePattern(System.Int32)">
+            <summary>
+            Elimina un objeto de tipo modelo de autos.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Repositories.IPatternRepository">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>
