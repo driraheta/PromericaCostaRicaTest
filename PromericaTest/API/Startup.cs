@@ -7,8 +7,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Repositories;
 
 namespace API
 {
@@ -24,6 +26,16 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //agrego inyeccion de dependencia de la conexion a la base de datos..
+            var sqlConnectionConfig = new SqlConnection(Configuration.GetConnectionString("demobd"));
+            services.AddSingleton(sqlConnectionConfig);
+
+            //inyeccion de dependencia del repositorios..
+            services.AddScoped<IMakeRepository, MakeRepository>();
+
+            //agregare configuracion para usar swagger..
+
+
             services.AddControllers();
         }
 
