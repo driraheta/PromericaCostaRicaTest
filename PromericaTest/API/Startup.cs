@@ -15,6 +15,8 @@ using Microsoft.OpenApi.Models;
 using API.Infra;
 using System.Reflection;
 using System.IO;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace API
 {
@@ -41,6 +43,14 @@ namespace API
             services.AddScoped<IPatternRepository, PatternRepository>();
 
             services.AddControllers();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ValidationFilter());
+            })
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
 
             //agregare configuracion para usar swagger..
             services.AddSwaggerGen(d=>

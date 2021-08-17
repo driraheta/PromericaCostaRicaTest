@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Repositories;
 using API.Models;
+using API.Models.Validations;
 
 namespace API.Controllers
 {
@@ -71,10 +72,18 @@ namespace API.Controllers
             if (make == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            await _makeRepository.UpdateMake(make);
+            var validator = new MakeValidator();
+            var result = validator.Validate(make);
+            if (result.IsValid)
+            {
+                await _makeRepository.UpdateMake(make);
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);            
 
             return NoContent();
         }
