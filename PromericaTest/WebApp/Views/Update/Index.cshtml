@@ -1,0 +1,77 @@
+﻿@model WebApp.Models.Make
+
+@{
+    ViewData["Title"] = "Update Page";
+}
+
+
+<div class="text-left">
+    <h1 class="display-6">Actualizar Marca</h1>
+    <p>Ingresa los datos solicitados</p>
+</div>
+
+<div class="container-fluid">
+    <form>
+        <input type="hidden" id="txtId" value="@Model.Id" />
+        <div class="form-group">
+            <label for="txtMarca">Nombre de la marca:</label>
+            <input type="text" class="form-control" name="txtMarca" id="txtMarca" value="@Model.Name" placeholder="Ingresa Marca">
+            @*<small id="emailHelp" class="form-text text-muted"></small>*@
+        </div>
+        <div class="form-group">
+            <label for="txtOrigen">Orígen de la marca:</label>
+            <input type="text" class="form-control" name="txtOrigen" id="txtOrigen" value="@Model.Country" placeholder="Ingresa Origen">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="update();">Actualizar</button>
+    </form>
+</div>
+
+
+<div class="text-right">
+    <a class="btn-link"
+       asp-controller="Home" asp-action="Index"
+       title="Maestro Marcas">
+        <i class="fas fa-undo"></i>&nbsp;Regresar al maestro
+    </a>
+</div>
+
+
+
+@section Scripts{ 
+    <script>
+        function update() {
+
+            var url = '@Url.Action("Update")';
+            var datos = {
+                Id: parseInt(document.getElementById("txtId").value),
+                Name: document.getElementById("txtMarca").value,
+                Country: document.getElementById("txtOrigen").value
+            };
+            console.log(datos);
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(datos),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            }).then(res => res.json())
+                .then(response => reload(response))
+                .catch(error => console.log('Error:', error))
+                .finally(() => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        text: 'Se actualizo el registro!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        ///onclose: location.reload(true)
+                    }).then(function () {
+                        //location.reload(true);
+                        window.location.href = "@Url.Action("Index", "Home")";
+                    });
+
+                });
+        }
+    </script>
+}

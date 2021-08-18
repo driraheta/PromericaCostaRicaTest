@@ -46,7 +46,7 @@
     <a class="btn-link"
        asp-controller="Home" asp-action="Index"
        title="Maestro Marcas">
-        <i class="fas fa-undo"></i>&nbsp;Regresar
+        <i class="fas fa-undo"></i>&nbsp;Regresar al maestro
     </a>
 </div>
 
@@ -69,8 +69,8 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     fetch(url, {
-                        method: 'POST', // or 'PUT'
-                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        method: 'POST',
+                        body: JSON.stringify(data), 
                         headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json'
@@ -85,7 +85,6 @@
                                 text: 'Se elimino el registro!',
                                 showConfirmButton: false,
                                 timer: 1500,
-                                ///onclose: location.reload(true)
                             }).then(function () {
                                 location.reload(true);
                             });
@@ -93,10 +92,6 @@
                         });
                 }
             })
-
-
-
-            //var username = 'courseya';
 
         }
     </script>
