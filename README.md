@@ -6,16 +6,19 @@ Repositorio para almacenar la prueba técnica para el banco promerica (TI) en Co
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
 ### Pre-requisitos 📋
-
+```
 _Net Core 3.1_
+```
+```
 _SQL Server_
+```
 
 ### Instalación/Ejecución 🔧
 
 _Pasos basicos:_
-
-1-
- _Ejecutar el script que esta en la carpeta database, fuera de la solucion del proyecto_
+```
+1- _Ejecutar el script que esta en la carpeta database, fuera de la solucion del proyecto_
+```
 2-
  _Abrir la solución en Visual Studio 2019 preferentemente_
 3- 
