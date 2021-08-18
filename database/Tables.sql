@@ -68,4 +68,6 @@ INSERT INTO Pattern (make_id, name, color, year, doors) values (7, 'FORTE', 'AZU
 INSERT INTO Pattern (make_id, name, color, year, doors) values (7, 'FORTE', 'NEGRO', 2012, 2)
 INSERT INTO Pattern (make_id, name, color, year, doors) values (7, 'FORTE', 'BLANCO', 2020, 4)
 
+INSERT INTO Pattern (make_id, name, color, year, doors) values (7, 'BORRAR', 'NARANJA', 2020, 4)
+
 select * from Pattern

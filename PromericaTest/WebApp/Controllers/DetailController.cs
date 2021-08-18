@@ -36,8 +36,24 @@ namespace WebApp.Controllers
                     patterns = JsonConvert.DeserializeObject<List<Pattern>>(apiResponse);
                 }
             }
-
             return View(patterns);
+        }
+
+        [HttpPost]
+        public async void Delete([FromBody] InputDeletePattern param)
+        {
+            APIResult result = new APIResult();
+            string endpoint = "Patterns/" + param.Id.ToString();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.DeleteAsync(Configuration.GetValue<string>("api") + endpoint))
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    result.StatusCode = response.StatusCode;
+                    result.JSONResponse = responseContent;
+                }
+            }
+            
         }
 
 

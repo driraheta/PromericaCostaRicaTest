@@ -29,7 +29,11 @@
                 <td>@item.Color</td>
                 <td>@item.Doors</td>
                 <td>
-                    
+                    <a class="btn btn-sm btn-outline-danger" data-patternid="@item.Id"
+                       onclick="DeletePattern(@item.Id);"
+                       title="Eliminar">
+                        <i class="fas fa-trash"></i>&nbsp;Borrar
+                    </a>
                 </td>
             </tr>
             }
@@ -45,3 +49,55 @@
         <i class="fas fa-undo"></i>&nbsp;Regresar
     </a>
 </div>
+
+
+
+@section Scripts{ 
+    <script>
+        function DeletePattern(id) {
+             var url = '@Url.Action("Delete")';
+             var data = { Id: id };
+
+            Swal.fire({
+                //title: 'Seguro de borrar el registro?',
+                text: "Seguro de borrar el registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, borrarlo'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(url, {
+                        method: 'POST', // or 'PUT'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                    }).then(res => res.json())
+                        .then(response => reload(response))
+                        .catch(error => console.log('Error:', error))
+                        .finally(() => {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                text: 'Se elimino el registro!',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                ///onclose: location.reload(true)
+                            }).then(function () {
+                                location.reload(true);
+                            });
+
+                        });
+                }
+            })
+
+
+
+            //var username = 'courseya';
+
+        }
+    </script>
+}
