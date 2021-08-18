@@ -19,18 +19,24 @@ _Pasos basicos:_
 ```
 1- _Ejecutar el script que esta en la carpeta database, fuera de la solucion del proyecto_
 ```
-2-
- _Abrir la solución en Visual Studio 2019 preferentemente_
-3- 
-_Editar y configurar la cadena de conexión que esta en el archivo startup del proyecto API_
-4- 
-_Ejecutar el proyecto API_
-5-
-_Probar que funcionan los metodos en swagger_
-6-
-_Ejecutar el proyecto WebApp de la solución (con el proyecto API en ejecución)_
-7-
-_Realizar las pruebas y validaciones que indican en el PDF_
+```
+2- Abrir la solución en Visual Studio 2019 preferentemente
+```
+```
+3- Editar y configurar la cadena de conexión que esta en el archivo startup del proyecto API
+```
+```
+4- Ejecutar el proyecto API
+```
+```
+5- Probar que funcionan los metodos en swagger
+```
+```
+6- Ejecutar el proyecto WebApp de la solución (con el proyecto API en ejecución)
+```
+```
+7- Realizar las pruebas y validaciones que indican en el PDF
+```
 
 ### Analice las pruebas end-to-end 🔩
 
