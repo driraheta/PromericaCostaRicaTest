@@ -57,10 +57,11 @@ que muestre una alerta antes de modificar para confirmar si se desea eliminar o 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/es/vs/) - IDE mas usado para desarrollo .NET. Community Edition
 * [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) - Para la administracion de la base de datos de forma grafíca.
 * [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/introduction/) - Popular framework de css
+* [FluentValidation](https://docs.fluentvalidation.net/en/latest/aspnet.html) - Nuget para realizar las validaciones de campos en el API.
 * [Sweet Alert 2](https://sweetalert2.github.io/) - Para mostrar alertas, ventanas de confirmacion.
 
-## Versionado 📌
-Use github y toda la gestíon es hecha en base a comandos.
+## Comentarios 📌
+* Las validaciones de campos estan hechas en el API, del lado de frontend no agregue validacion de campos, esto para hacerlo unicamente en backend usando la libreria de fluent validation
 
 ## Expresiones de Gratitud 🎁
 
