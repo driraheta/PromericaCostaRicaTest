@@ -40,17 +40,17 @@ _Pasos basicos:_
 
 ### Analice las pruebas end-to-end 🔩
 
-1- Debe contar con un botón que al presionarlo consulte la información de la tabla maestro y la muestra como una lista en la página
-2- Debe contar con un botón que al presionarlo llame a la página de consulta del detalle
-3- Debe contar con un botón que llame a la página de modificación del maestro (para un registro específico)
-4- Debe permitir modificar solo la información mínima necesaria del registro específico seleccionado
+* 1- Debe contar con un botón que al presionarlo consulte la información de la tabla maestro y la muestra como una lista en la página
+* 2- Debe contar con un botón que al presionarlo llame a la página de consulta del detalle
+* 3- Debe contar con un botón que llame a la página de modificación del maestro (para un registro específico)
+* 4- Debe permitir modificar solo la información mínima necesaria del registro específico seleccionado
 en la consulta maestro.
-5- Debe contar con un botón que al presionarlo realice la actualización del registro.
-6- Debe permitir regresar a la consulta del maestro.
-7- Debe permitir la consulta de la información del registro específico seleccionado en la consulta maestro.
-8- Debe contar con un botón que al presionarlo realice el borrado (se debe implementar un javascript
+* 5- Debe contar con un botón que al presionarlo realice la actualización del registro.
+* 6- Debe permitir regresar a la consulta del maestro.
+* 7- Debe permitir la consulta de la información del registro específico seleccionado en la consulta maestro.
+* 8- Debe contar con un botón que al presionarlo realice el borrado (se debe implementar un javascript
 que muestre una alerta antes de modificar para confirmar si se desea eliminar o no el registro).
-9- Debe permitir regresar a la consulta del maestro.
+* 9- Debe permitir regresar a la consulta del maestro.
 
 ## Construido con 🛠️
 
